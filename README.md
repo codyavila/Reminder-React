@@ -1,6 +1,6 @@
 # Welcome to Never Forgetti!
 
-**Author: Cody Sanders
+Author: Cody Sanders
 
 This is the front-end of Meme Central.
 
@@ -16,6 +16,12 @@ To make a reminder, you must first make an account and sign in.
 
 ***
 
+## Pictures of App
+
+!([Picture 1 of Never Forgetti](https://i.imgur.com/huxo3qw.png))
+!([Picture 2 of Never Forgetti](https://i.imgur.com/JgRa1ec.png))
+!([Picture 3 of Never Forgetti](https://i.imgur.com/99VqP7Z.png))
+
 ## Planning Story
 
 1. Design ERD and Wire-frame
@@ -24,15 +30,6 @@ To make a reminder, you must first make an account and sign in.
 4. DELETE reminder own by the owner
 5. PATCH new title, description, time, difficulty for reminders
 6. Basic Styling
-
-## API Routes
-| HTTP Method   | URL Path     | Action           | CRUD     |
-|:--------------|:-------------|:-----------------|----------|
-| GET           | /reminder       | index or list    | `R`ead   |
-| GET           | /reminder/`:id` | show or retrieve | `R`ead   |
-| POST          | /reminder       | create           | `C`reate |
-| PATCH         | /reminder/`:id` | update           | `U`pdate |
-| DELETE        | /reminder/`:id` | destroy          | `D`elete |
 
 ### User Stories
 
@@ -64,16 +61,27 @@ To make a reminder, you must first make an account and sign in.
 
 ### v.2 Features
 
- - Search functionality for name of title.
- - Filter for upcoming due dates.
- - Alert when reminder is due that day.
-<!-- ### Unsolved Problems
+ - Plan to make a search bar.
+ - Filter reminders by due date.
+ - Alert user on the due date.
 
-... -->
+### Installation Instructions
+
+ - Fork and clone this repository.
+ - Change into the repository directory.
+ - npm install
+ - Create and checkout to a new branch if you plan to make changes.
+
+## API Routes
+| HTTP Method   | URL Path     | Action           | CRUD     |
+|:--------------|:-------------|:-----------------|----------|
+| GET           | /reminder       | index or list    | `R`ead   |
+| GET           | /reminder/`:id` | show or retrieve | `R`ead   |
+| POST          | /reminder       | create           | `C`reate |
+| PATCH         | /reminder/`:id` | update           | `U`pdate |
+| DELETE        | /reminder/`:id` | destroy          | `D`elete |
 
 ***
 
-## Wireframe and ERD
+## Wireframe
 ![Never Forgetti Wireframe](https://i.imgur.com/huxo3qw.png)
-
-![Never Forgetti API ERD](https://i.imgur.com/7t0b9tb.png)
