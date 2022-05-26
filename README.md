@@ -2,7 +2,7 @@
 
 Author: Cody Sanders
 
-This is the front-end of Meme Central.
+This is the front-end of Never Forgetti.
 
 Never Forgetti is a reminder website where you can create 'Reminder Noodles' to keep track of things you need to get done. You can set a time, title, description, and difficulty rating of the task.
 To make a reminder, you must first make an account and sign in.
