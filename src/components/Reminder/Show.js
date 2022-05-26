@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
-import { Modal, Button } from 'react-bootstrap'
+import { Modal, Button, Card, Col, Row } from 'react-bootstrap'
 import axios from 'axios'
+import Rating from './Rating'
 import apiUrl from '../../apiConfig'
 
 import { Redirect, Link, withRouter } from 'react-router-dom'
@@ -20,10 +21,6 @@ function ShowReminder ({ user, match, msgAlert }) {
       headers: {
         Authorization: `Bearer ${user.token}`
       }
-      // pass in, fire request, send me the arrays, filter this list for users =
-      // filter => resource === user id
-      // new array meet conditions
-      // pass that array to map
     }).then((res) => {
       setReminder(res.data.reminder)
     })
@@ -53,9 +50,6 @@ function ShowReminder ({ user, match, msgAlert }) {
         })
       })
   }
-  // const onEdit = () => {
-  //   setEditToggle(!editToggle)
-  // }
   if (!reminder) {
     return <p>Loading...</p>
   }
@@ -70,19 +64,30 @@ function ShowReminder ({ user, match, msgAlert }) {
       />
     )
   }
-  // if (editToggle === false) {
-  //   return (
-  //     <Redirect to={{ pathname: '/my-memes/' + match.params.id }} />
-  //   )
-  // }
-
   return (
     <>
-      <h1>{reminder.title}</h1>
       <div style={{ display: 'flex', justifyContent: 'center' }}>
-        {/* <p>Creator: {meme.author}</p>
-      <p>Created: {meme.createdAt.substring(0, 10)}</p>
-      <p>Updated: {meme.updatedAt.substring(0, 10)}</p> */}
+        <Row>
+          <Col>
+            <Card className='my-3 p-3 rounded'>
+              <Card.Body>
+                <Link to={`/reminder/${reminder._id}`}>
+                  <Card.Title as='div'>
+                    <h1>{reminder.title}</h1>
+                  </Card.Title>
+                </Link>
+                <Card.Text as='p'>
+                  Due At: {reminder.time.substring(0, 10)}
+                </Card.Text>
+                <Card.Text as='h6'>{reminder.description}</Card.Text>
+                <Card.Text as='h3'>Difficulty:</Card.Text>
+                <Rating value={reminder.rating} />
+              </Card.Body>
+            </Card>
+          </Col>
+        </Row>
+      </div>
+      <div style={{ display: 'flex', justifyContent: 'center' }}>
         <Button variant='primary' onClick={handleShow}>
           Delete Reminder
         </Button>

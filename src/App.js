@@ -14,6 +14,8 @@ import CreateReminder from './components/Reminder/Create'
 import IndexReminder from './components/Reminder/Index'
 import ShowReminder from './components/Reminder/Show'
 import EditReminder from './components/Reminder/Edit'
+import Home from './components/Reminder/Home'
+import Footer from './components/Footer/Footer'
 
 class App extends Component {
   constructor (props) {
@@ -61,6 +63,13 @@ class App extends Component {
         ))}
         <main className='container'>
           <Route
+            exact
+            path='/'
+            render={() => (
+              <Home msgAlert={this.msgAlert} setUser={this.setUser} />
+            )}
+          />
+          <Route
             path='/sign-up'
             render={() => (
               <SignUp msgAlert={this.msgAlert} setUser={this.setUser} />
@@ -107,19 +116,16 @@ class App extends Component {
           />
           <AuthenticatedRoute
             user={user}
-            path='/reminders/:id'
-            render={() => (
-              <ShowReminder msgAlert={this.msgAlert} user={user} />
-            )}
+            path='/reminder/:id'
+            render={() => <ShowReminder msgAlert={this.msgAlert} user={user} />}
           />
           <AuthenticatedRoute
             user={user}
             path='/reminder/:id/edit'
-            render={() => (
-              <EditReminder msgAlert={this.msgAlert} user={user} />
-            )}
+            render={() => <EditReminder msgAlert={this.msgAlert} user={user} />}
           />
         </main>
+        <Footer />
       </Fragment>
     )
   }

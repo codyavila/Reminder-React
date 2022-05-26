@@ -36,7 +36,7 @@ onSignIn = (event) => {
         variant: 'success'
       })
     )
-    .then(() => history.push('/'))
+    .then(() => history.push('/all-reminders'))
     .catch((error) => {
       this.setState({ email: '', password: '' })
       msgAlert({

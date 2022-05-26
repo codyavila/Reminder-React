@@ -9,9 +9,11 @@ const ReminderCreate = ({ user, msgAlert }) => {
   const [reminder, setReminder] = useState({
     title: '',
     description: '',
-    time: ''
+    time: '',
+    rating: ''
   })
-  const [createdReminderId, setCreatedReminderId] = useState(null)
+  // const [created, setCreated] = useState(false)
+  const [updated, setUpdated] = useState(false)
 
   const handleChange = (event) => {
     event.persist()
@@ -32,7 +34,7 @@ const ReminderCreate = ({ user, msgAlert }) => {
         Authorization: `Bearer ${user.token}`
       }
     })
-      .then((res) => setCreatedReminderId(res.data.reminder.id))
+      .then(() => setUpdated(true))
       .then(() =>
         msgAlert({
           heading: 'Reminder Creating',
@@ -47,10 +49,14 @@ const ReminderCreate = ({ user, msgAlert }) => {
           variant: 'danger'
         })
       })
+  }
 
-    if (createdReminderId) {
-      return <Redirect to={`/reminder/${createdReminderId}`} />
-    }
+  if (!reminder) {
+    return <p>Loading...</p>
+  }
+
+  if (updated) {
+    return <Redirect to={'/all-reminders'} />
   }
   return (
     <>
@@ -83,6 +89,16 @@ const ReminderCreate = ({ user, msgAlert }) => {
               name='time'
               value={reminder.time}
               type='date'
+              onChange={handleChange}
+            />
+          </Form.Group>
+          <Form.Group>
+            <Form.Label className='rating'></Form.Label>
+            <Form.Control
+              required
+              name='rating'
+              placeholder='Number 1-5, decimals work also'
+              value={reminder.rating}
               onChange={handleChange}
             />
           </Form.Group>

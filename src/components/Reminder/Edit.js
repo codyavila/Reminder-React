@@ -5,15 +5,13 @@ import apiUrl from '../../apiConfig'
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
 import { Redirect, withRouter } from 'react-router-dom'
-// import './App.css'
-// import Form from 'react-bootstrap/Form'
-// import Button from 'react-bootstrap/Button'
 
 const ReviewEdit = ({ user, match, msgAlert }) => {
   const [reminder, setReminder] = useState({
     title: '',
     description: '',
-    time: ''
+    time: '',
+    rating: ''
   })
   const [updated, setUpdated] = useState(false)
 
@@ -24,10 +22,6 @@ const ReviewEdit = ({ user, match, msgAlert }) => {
       headers: {
         Authorization: `Bearer ${user.token}`
       }
-      // pass in, fire request, send me the arrays, filter this list for users =
-      // filter => resource === user id
-      // new array meet conditions
-      // pass that array to map
     }).then((res) => {
       setReminder(res.data.reminder)
     })
@@ -55,7 +49,7 @@ const ReviewEdit = ({ user, match, msgAlert }) => {
       .then(() => setUpdated(true))
       .then(() =>
         msgAlert({
-          heading: 'Reminder Creating',
+          heading: 'Reminder Edited',
           message: 'Now you wont forget!',
           variant: 'success'
         })
@@ -74,7 +68,7 @@ const ReviewEdit = ({ user, match, msgAlert }) => {
   }
 
   if (updated) {
-    return <Redirect to={`/reminder/${match.params.id}`} />
+    return <Redirect to={'/all-reminders'} />
   }
 
   return (
@@ -101,12 +95,21 @@ const ReviewEdit = ({ user, match, msgAlert }) => {
           />
         </Form.Group>
         <Form.Group>
-          <Form.Label className='date'></Form.Label>
+          <Form.Label className='date'>Date</Form.Label>
           <Form.Control
             required
             name='time'
             value={reminder.time.substring(0, 10)}
             type='date'
+            onChange={handleChange}
+          />
+        </Form.Group>
+        <Form.Group>
+          <Form.Label className='rating'>Difficulty</Form.Label>
+          <Form.Control
+            required
+            name='rating'
+            value={reminder.rating}
             onChange={handleChange}
           />
         </Form.Group>

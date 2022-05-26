@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react'
+import Rating from './Rating'
 import axios from 'axios'
 import apiUrl from '../../apiConfig'
-import { Card } from 'react-bootstrap'
+import { Card, Col, Row } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 
 function IndexReminder ({ user, msgAlert }) {
@@ -18,21 +19,28 @@ function IndexReminder ({ user, msgAlert }) {
       setReminders(res.data.reminder)
     })
   }, [])
+
   let reminderJSX
   if (reminders) {
     reminderJSX = reminders.map((reminder) => {
       return (
-        <div key={reminder._id}>
-          <Card style={{ width: '40rem' }}>
-            <Link to={`/reminders/${reminder._id}`}>
-              <Card.Title>{reminder.title}</Card.Title>
-            </Link>
+        <Col key={reminder._id} sm={12} md={6} lg={4} xl={3}>
+          <Card className='my-3 p-3 rounded'>
             <Card.Body>
-              <Card.Text>Date: {reminder.time.substring(0, 10)}</Card.Text>
-              <Card.Text>Description: {reminder.description}</Card.Text>
+              <Link to={`/reminder/${reminder._id}`}>
+                <Card.Title as='h1'>
+                  <strong>{reminder.title}</strong>
+                </Card.Title>
+              </Link>
+              <Card.Text as='p'>
+                Due At: {reminder.time.substring(0, 10)}
+              </Card.Text>
+              <Card.Text as='h6'>{reminder.description}</Card.Text>
+              <Card.Text as='h3'>Difficulty:</Card.Text>
+              <Rating value= {reminder.rating} />
             </Card.Body>
           </Card>
-        </div>
+        </Col>
       )
     })
   }
@@ -40,18 +48,11 @@ function IndexReminder ({ user, msgAlert }) {
   return (
     <>
       <h3 style={{ textAlign: 'center', fontSize: '80px' }}>
-        Things I wont forget!
+        My Reminder Noodles
       </h3>
-      <div style={{ display: 'flex', justifyContent: 'center' }}>
-        <ul
-          style={{
-            display: 'flex',
-            flexDirection: 'column-reverse',
-            gap: '50px'
-          }}>
-          {reminderJSX}
-        </ul>
-      </div>
+      <Row>
+        {reminderJSX}
+      </Row>
     </>
   )
 }
