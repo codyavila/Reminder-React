@@ -28,9 +28,8 @@ function IndexReminder ({ user, msgAlert }) {
               <Card.Title>{reminder.title}</Card.Title>
             </Link>
             <Card.Body>
-              <Card.Text>
-                <p>Date: {reminder.time}</p>
-              </Card.Text>
+              <Card.Text>Date: {reminder.time.substring(0, 10)}</Card.Text>
+              <Card.Text>Description: {reminder.description}</Card.Text>
             </Card.Body>
           </Card>
         </div>

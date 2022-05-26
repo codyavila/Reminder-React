@@ -12,6 +12,8 @@ import SignOut from './components/auth/SignOut'
 import ChangePassword from './components/auth/ChangePassword'
 import CreateReminder from './components/Reminder/Create'
 import IndexReminder from './components/Reminder/Index'
+import ShowReminder from './components/Reminder/Show'
+import EditReminder from './components/Reminder/Edit'
 
 class App extends Component {
   constructor (props) {
@@ -89,6 +91,7 @@ class App extends Component {
             )}
           />
           <AuthenticatedRoute
+            exact
             user={user}
             path='/reminder'
             render={() => (
@@ -100,6 +103,20 @@ class App extends Component {
             path='/all-reminders'
             render={() => (
               <IndexReminder msgAlert={this.msgAlert} user={user} />
+            )}
+          />
+          <AuthenticatedRoute
+            user={user}
+            path='/reminders/:id'
+            render={() => (
+              <ShowReminder msgAlert={this.msgAlert} user={user} />
+            )}
+          />
+          <AuthenticatedRoute
+            user={user}
+            path='/reminder/:id/edit'
+            render={() => (
+              <EditReminder msgAlert={this.msgAlert} user={user} />
             )}
           />
         </main>
