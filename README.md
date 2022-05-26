@@ -18,7 +18,7 @@ To make a reminder, you must first make an account and sign in.
 
 ## Pictures of App
 
-![Picture 1 of Never Forgetti](https://i.imgur.com/huxo3qw.png)
+![Picture 1 of Never Forgetti](https://i.imgur.com/ENwrXhL.png)
 ![Picture 2 of Never Forgetti](https://i.imgur.com/JgRa1ec.png)
 ![Picture 3 of Never Forgetti](https://i.imgur.com/99VqP7Z.png)
 
