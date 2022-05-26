@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/Reminder-React/static/css/main.e4cfc10c.chunk.css",
-    "main.js": "/Reminder-React/static/js/main.6f5af15c.chunk.js",
-    "main.js.map": "/Reminder-React/static/js/main.6f5af15c.chunk.js.map",
+    "main.js": "/Reminder-React/static/js/main.c1d84949.chunk.js",
+    "main.js.map": "/Reminder-React/static/js/main.c1d84949.chunk.js.map",
     "runtime-main.js": "/Reminder-React/static/js/runtime-main.7b33d136.js",
     "runtime-main.js.map": "/Reminder-React/static/js/runtime-main.7b33d136.js.map",
     "static/js/2.2b24872e.chunk.js": "/Reminder-React/static/js/2.2b24872e.chunk.js",
@@ -15,6 +15,6 @@
     "static/js/runtime-main.7b33d136.js",
     "static/js/2.2b24872e.chunk.js",
     "static/css/main.e4cfc10c.chunk.css",
-    "static/js/main.6f5af15c.chunk.js"
+    "static/js/main.c1d84949.chunk.js"
   ]
 }
